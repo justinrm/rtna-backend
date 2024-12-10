@@ -1,32 +1,32 @@
-
-# FastAPI framework and related tools
+# Web Framework
 fastapi==0.95.1
-uvicorn==0.22.0
+uvicorn[standard]==0.22.0  # Includes standard dependencies for uvicorn
 
 # Database and ORM
 sqlalchemy==1.4.46
 psycopg2-binary==2.9.5
-alembic==1.10.4
+alembic==1.10.4  # Database migrations
 
-# Redis and Celery for caching and task management
+# Caching and Task Management
 redis==5.0.0
-celery==5.3.1
-aioredis==2.0.1
+aioredis==2.0.1  # Async Redis support
+celery[redis]==5.3.1  # Celery with Redis backend support
 
-# Security (password hashing, JWT tokens)
-passlib==1.7.4
-python-jose==3.3.0
+# Security
+passlib[bcrypt]==1.7.4  # Password hashing with bcrypt
+python-jose==3.3.0  # JWT and token encoding/decoding
 
-# Validation and utility tools
-pydantic==1.10.7
-requests==2.28.2
+# Data Validation and Utilities
+pydantic==1.10.7  # Data validation and parsing
+requests==2.28.2  # HTTP requests
 
-# Logging and monitoring
-loguru==0.6.0
+# Logging and Monitoring
+loguru==0.6.0  # Advanced logging support
 
-# Testing tools
+# Testing
 pytest==7.4.0
 pytest-asyncio==0.20.2
 
-# Dotenv for environment variables
-python-dotenv==1.0.0
+# Environment Variables
+python-dotenv==1.0.0  # Load environment variables
+

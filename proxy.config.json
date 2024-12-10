@@ -1,8 +1,11 @@
 {
   "/api": {
-    "target": process.env.API_URL || "http://localhost:8000",
-    "secure": false,
-    "changeOrigin": true
+    "target": "http://localhost:8000", // Default local backend
+    "secure": false,                  // Disable SSL verification for development
+    "changeOrigin": true,             // Modify the origin header to match the target
+    "pathRewrite": {                  // Optional: Rewrite paths if needed
+      "^/api": ""
+    }
   }
 }
 

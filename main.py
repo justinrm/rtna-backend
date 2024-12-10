@@ -8,6 +8,8 @@ from app.utilities.logging import log_event, log_exception
 
 app = FastAPI()
 
+app.include_router(health_router)
+
 @app.post("/sources/refresh")
 async def refresh_sources():
     """

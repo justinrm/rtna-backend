@@ -1,26 +1,35 @@
 {
   "name": "regional-news-backend",
   "version": "1.0.0",
-  "description": "Backend for the Regional News Aggregator focused on Lewiston, providing APIs for user management, content aggregation, and real-time updates.",
+  "description": "Backend for the Regional News Aggregator providing APIs for user management, content aggregation, and real-time updates.",
   "main": "app/main.py",
   "scripts": {
     "start": "uvicorn app.main:app --host 0.0.0.0 --port 8000",
     "dev": "uvicorn app.main:app --reload",
-    "lint": "flake8 app",
-    "test": "pytest tests/",
-    "build": "docker build -t regional-news-backend .",
-    "deploy": "docker-compose up -d"
+    "lint": "flake8 app",                          // Code linting
+    "test": "pytest tests/",                       // Run tests
+    "build": "docker build -t regional-news-backend .", // Build Docker image
+    "deploy": "docker-compose up -d",             // Deploy with Docker Compose
+    "clean": "rm -rf __pycache__ *.log",          // Clean build artifacts
+    "prestart": "dotenv -e .env -- uvicorn ..."   // Optional: Pre-run environment setup
   },
   "dependencies": {
-    "axios": "^1.3.0",
-    "dotenv": "^16.0.3"
+    "axios": "^1.3.0",                             // HTTP requests
+    "dotenv": "^16.0.3"                            // Load environment variables
   },
   "devDependencies": {
-    "eslint": "^8.27.0"
+    "eslint": "^8.27.0"                            // JavaScript linting
   },
   "engines": {
     "node": ">=14",
     "npm": ">=6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/regional-news-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/regional-news-backend/issues"
   },
   "keywords": ["backend", "fastapi", "news", "aggregation", "api"],
   "author": "Your Team",

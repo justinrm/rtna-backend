@@ -1,6 +1,8 @@
 from app.utilities.database import execute_query
-from app.utilities.logging import log_event, log_exception
+from app.utilities.logging import get_logger, log_event, log_exception
 from app.utilities.general import handle_error
+
+logger = get_logger(__name__)
 
 @handle_error
 def add_feedback(user_id: int, content_id: int, feedback_type: str, impact_score: int = 1):
@@ -16,17 +18,17 @@ def add_feedback(user_id: int, content_id: int, feedback_type: str, impact_score
     Returns:
         dict: Success message.
     """
-    log_event("DATA_INSERT", f"User {user_id} adding feedback on content {content_id}.")
+    log_event(logger, "DATA_INSERT", "Adding feedback", user_id=user_id, content_id=content_id, feedback_type=feedback_type)
     query = """
         INSERT INTO feedback (user_id, content_id, feedback_type, impact_score, timestamp)
         VALUES (%s, %s, %s, %s, NOW())
     """
     try:
         execute_query(query, (user_id, content_id, feedback_type, impact_score))
-        log_event("DATA_INSERT", f"Feedback added for content {content_id} by user {user_id}.")
+        log_event(logger, "DATA_INSERT", "Feedback added successfully", user_id=user_id, content_id=content_id)
         return {"message": "Feedback added successfully."}
     except Exception as e:
-        log_exception(e, f"Error adding feedback for content {content_id}.")
+        log_exception(logger, e, "Error adding feedback", user_id=user_id, content_id=content_id)
         raise
 
 @handle_error
@@ -40,7 +42,7 @@ def get_feedback(content_id: int):
     Returns:
         list: List of feedback entries.
     """
-    log_event("DATA_FETCH", f"Fetching feedback for content {content_id}.")
+    log_event(logger, "DATA_FETCH", "Fetching feedback", content_id=content_id)
     query = """
         SELECT user_id, feedback_type, impact_score, timestamp
         FROM feedback
@@ -49,10 +51,10 @@ def get_feedback(content_id: int):
     """
     try:
         feedback = execute_query(query, (content_id,))["data"]
-        log_event("DATA_FETCH", f"Retrieved {len(feedback)} feedback records for content {content_id}.")
+        log_event(logger, "DATA_FETCH", f"Retrieved {len(feedback)} feedback records", content_id=content_id)
         return feedback
     except Exception as e:
-        log_exception(e, f"Error retrieving feedback for content {content_id}.")
+        log_exception(logger, e, "Error retrieving feedback", content_id=content_id)
         raise
 
 @handle_error
@@ -63,7 +65,7 @@ def analyze_feedback_trends():
     Returns:
         list: Aggregated feedback trends with counts and impact scores.
     """
-    log_event("ANALYSIS", "Starting feedback trends analysis.")
+    log_event(logger, "ANALYSIS", "Starting feedback trends analysis")
     query = """
         SELECT feedback_type, COUNT(*) as feedback_count, SUM(impact_score) as total_impact
         FROM feedback
@@ -72,9 +74,9 @@ def analyze_feedback_trends():
     """
     try:
         trends = execute_query(query)["data"]
-        log_event("ANALYSIS", "Feedback trends analysis completed successfully.")
+        log_event(logger, "ANALYSIS", "Feedback trends analysis completed successfully")
         return trends
     except Exception as e:
-        log_exception(e, "Error analyzing feedback trends.")
+        log_exception(logger, e, "Error analyzing feedback trends")
         raise
 
