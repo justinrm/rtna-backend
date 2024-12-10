@@ -1,0 +1,32 @@
+
+# FastAPI framework and related tools
+fastapi==0.95.1
+uvicorn==0.22.0
+
+# Database and ORM
+sqlalchemy==1.4.46
+psycopg2-binary==2.9.5
+alembic==1.10.4
+
+# Redis and Celery for caching and task management
+redis==5.0.0
+celery==5.3.1
+aioredis==2.0.1
+
+# Security (password hashing, JWT tokens)
+passlib==1.7.4
+python-jose==3.3.0
+
+# Validation and utility tools
+pydantic==1.10.7
+requests==2.28.2
+
+# Logging and monitoring
+loguru==0.6.0
+
+# Testing tools
+pytest==7.4.0
+pytest-asyncio==0.20.2
+
+# Dotenv for environment variables
+python-dotenv==1.0.0

@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": process.env.API_URL || "http://localhost:8000",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
+

@@ -1,0 +1,29 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+env/
+venv/
+
+# Logs
+*.log
+
+# Environment Variables
+.env
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
+
+# Docker
+*.pid
+*.sock
+logs/
+docker-compose.override.yml
