@@ -1,7 +1,7 @@
 # FRONTEND_TODO
 
 ## Overview
-The frontend for the **Regional News Aggregator** platform will be built with **React**, using **Axios** for API integration and **Tailwind CSS** for styling. The design theme will combine **"Wall Street Formality"** with a **"Great Gatsby aesthetic"**, emphasizing a **futuristic, seamless scrolling experience**, inspired by [Northrop Grumman](https://www.northropgrumman.com/).
+The frontend for the **rTNA** platform will be built with **React**, using **Axios** for API integration and **Tailwind CSS** for styling. The design theme will combine **"Wall Street Formality"** with a **"Great Gatsby aesthetic"**, emphasizing a **futuristic, seamless scrolling experience**, inspired by [Northrop Grumman](https://www.northropgrumman.com/).
 
 The frontend will initially be deployed using **Netlify**, leveraging its ease of use, continuous deployment capabilities, and environment variable management.
 
